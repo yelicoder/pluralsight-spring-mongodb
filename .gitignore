@@ -1,1 +1,9 @@
 /home
+
+# Intellij
+*.iml
+
+# Other
+help.md
+*mv*
+**/.mvn
