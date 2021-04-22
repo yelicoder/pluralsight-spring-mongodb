@@ -59,6 +59,10 @@ java -jar ./my-app.jar --spring.data.mongodb.uri=mongodb://localhost:27017/airpo
   * You can text index properties across the whole object graph
   * Pay attention to weights as they may change the order or relevance of a found document
   * Each document is scanned, A score is computed internally based on the text index weights, results are sorted by this score
+* Full Text Search
+  * Query is constructed differently
+    * TextCriteria
+    * Query byFreeText = TextQueryt.queryText(textCriteria)
 
 
   
