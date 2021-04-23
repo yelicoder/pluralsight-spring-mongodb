@@ -82,7 +82,8 @@ java -jar ./my-app.jar --spring.data.mongodb.uri=mongodb://localhost:27017/airpo
   * Create read converter: from Mongo type to Java type
   * Register converters as a Spring bean
 
-### Module 5
+### Module 5 MongoDBRepository
+* 4 general operations: insert, save, delete, deleteById, deleteAll
 
 
   
