@@ -84,6 +84,7 @@ java -jar ./my-app.jar --spring.data.mongodb.uri=mongodb://localhost:27017/airpo
 
 ### Module 5 MongoDBRepository
 * 4 general operations: insert, save, delete, deleteById, deleteAll
+* MongoDB @Query ("a MongoDB query"). A typical MongoDB query is:  ({`classname.fieldname`: {$operator: ?0})
 
 
   
