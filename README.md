@@ -64,6 +64,21 @@ java -jar ./my-app.jar --spring.data.mongodb.uri=mongodb://localhost:27017/airpo
     * TextCriteria
     * Query byFreeText = TextQueryt.queryText(textCriteria)
 
+### Module 4
+* Batch insert: insert a list using mongoTemplate.insertAll
+* Save for update: Scan and the collection to find the document with the ID. If found completed replace the old one. If not, insert a new document with the provided ID
+* Update and mongoTemplate.updateMulti
+  * Query to find the collection returned
+  * Update.update("field name", value) to update a particular field
+  * mongoTemplate.updateMulti to update the collection together
+  * mongoTemplate.updateFirst only update the first document retrieved
+* Delete: single, multiple, all
+  * mongoTemplate.remove
+  * mongoTemplate.findAllAndRemove(aQuery, ...class)
+  * mongoTemplate.findAllAndRemove(all, ...class)
+  * mongoTemplate.dropCollection(...class)
+* 
+
 
   
 
