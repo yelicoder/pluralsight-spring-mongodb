@@ -77,7 +77,11 @@ java -jar ./my-app.jar --spring.data.mongodb.uri=mongodb://localhost:27017/airpo
   * mongoTemplate.findAllAndRemove(aQuery, ...class)
   * mongoTemplate.findAllAndRemove(all, ...class)
   * mongoTemplate.dropCollection(...class)
-* 
+* Mongo Converter: customize how to convert between java types and Mongo types
+  * Create write converter: from Java type to Mongo type
+  * Create read converter: from Mongo type to Java type
+  * Register converters as a Spring bean
+
 
 
   
