@@ -2,6 +2,7 @@
 
 # Intellij
 *.iml
+*idea*
 
 # Other
 help.md
