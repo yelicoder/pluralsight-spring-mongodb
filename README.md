@@ -27,12 +27,11 @@ java -jar ./my-app.jar --spring.data.mongodb.uri=mongodb://localhost:27017/airpo
 ```
 ### Module 3
 * Fetching Data with MongoTemplate
-  * The query definition with filters, sort etc
-    * Query structrure: 
-     * Query.query(Criteria.) 
-       * new Criteria().orOperation(Criteria...., Criteria...))
-       * traverse the object graph in the query: Criteria.where("engine.needsMaintenance").is(true)
-     * Query.query(Criteria...).with(Sort.by(Sort.Direction.ASC, "...")).with(PageRequest.of(1.20))
+  * Query structrure: 
+    * Query.query(Criteria.) 
+      * new Criteria().orOperation(Criteria...., Criteria...))
+      * traverse the object graph in the query: Criteria.where("engine.needsMaintenance").is(true)
+    * Query.query(Criteria...).with(Sort.by(Sort.Direction.ASC, "...")).with(PageRequest.of(1.20))
     ```
       Query byAircraft = Query.query(Criteria.where("aircraft.model").is(aircraft));
       
@@ -46,8 +45,6 @@ java -jar ./my-app.jar --spring.data.mongodb.uri=mongodb://localhost:27017/airpo
                         )
                         
     ``` 
-  * Outcome of the query
-  * Class type that contains Mongo annotations
   * MongoTemplate has many find methods
     * findAll(Person.class)
     * find(q, Person.class)
@@ -55,14 +52,12 @@ java -jar ./my-app.jar --spring.data.mongodb.uri=mongodb://localhost:27017/airpo
     * count(q, Person.class)
   
 * Text Indexes
-  * Work on properties of type string or arrays of strings
+  * Work on properties of type String or arrays of Strings
   * You can text index properties across the whole object graph
   * Pay attention to weights as they may change the order or relevance of a found document
   * Each document is scanned, A score is computed internally based on the text index weights, results are sorted by this score
-* Full Text Search
-  * Query is constructed differently
-    * TextCriteria
-    * Query byFreeText = TextQueryt.queryText(textCriteria)
+* Full Text Search: Query is constructed differently using TextQuery.queryText and TextCriteria
+    
 
 ### Module 4
 * Batch insert: insert a list using mongoTemplate.insertAll
