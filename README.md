@@ -108,6 +108,17 @@ java -jar ./my-app.jar --spring.data.mongodb.uri=mongodb://localhost:27017/airpo
   * Lifecycle events are emitted only for root level types. Subdocuments are not subject to event publication unless they are annotated with @DBRef
   * Lifecycle events are async. We have no guarantee to when an even is processed.
   * To implement an event, extends AbstractMongoEventListener as a Component
+### Module 7
+* use a framework to do the database migration. Do not use script
+* Migration component should
+  * detect existing DB version and upgrade automatically
+  * Easy way to define ordered data changes
+  * Auditing of all applied migrations
+* MongoBee: is a Java tool which helps you to manage changes in your MongoDB and synchronize them with your applicatioin. The concept is very similar to other databased migration tools such as Liquibase or Flyway.
+  * group Id: com.github.mongobee
+  * artifact Id: mongobee
+  * Initialize mongobee as a Bean
+  * Change set will only run once. There are some internal logic to recognize that the changeset is already run and will not run again
 
 
   
