@@ -66,7 +66,7 @@ java -jar ./my-app.jar --spring.data.mongodb.uri=mongodb://localhost:27017/airpo
 
 ### Module 4
 * Batch insert: insert a list using mongoTemplate.insertAll
-* Save for update: Scan and the collection to find the document with the ID. If found completed replace the old one. If not, insert a new document with the provided ID
+* Update using the Save method: Scan and the collection to find the document with the ID. If found completed replace the old one. If not, insert a new document with the provided ID
 * Update and mongoTemplate.updateMulti
   * Query to find the collection returned
   * Update.update("field name", value) to update a particular field
@@ -85,6 +85,29 @@ java -jar ./my-app.jar --spring.data.mongodb.uri=mongodb://localhost:27017/airpo
 ### Module 5 MongoDBRepository
 * 4 general operations: insert, save, delete, deleteById, deleteAll
 * MongoDB @Query ("a MongoDB query"). A typical MongoDB query is:  ({`classname.fieldname`: {$operator: ?0})
+### Module 6
+* DBRef link documents together by using the "id" field, collection name and a database name.
+  * Can link documents across collections or across different databases
+  * To resolve DBRefs, the application must perform qdditional queries
+  * Cascading is not supported
+  * $ref: The name of the collection where the linked document resides
+  * $id: the valud of the id field of the referenced document
+  * $db: the name of the database where the referenced document resides
+  * The order of fields in the DBRef matters and must be used in teh correct sequence
+  * Spring Data MongoDB fetchers documents annotated with @DBRef automatically
+  * Cascading does not work with DBRefs on save by default. You can hook into Mongo Lifecycle events and implement cascading.
+  * By default,, @DBRef instructs the framework to perform an eager lad. This can be changed by modifying the lazy property to "true"
+* Mongo Lifecycle events
+  * onBeforeConvert is called before the Java object is c onverted to a Document by the MongoConverter
+  * onBeforeSave is called before inserting or saving the document in the database
+  * onAfterSave is called after the document is inserted or saved in the database
+  * onAfterLoad is called after the Document has been retrieved from the database
+  * onAfterConvert is called afgter the Document has been converted into a POJO
+  * onBeforeDelete is called before the document gets deleted from the database
+  * onAfterDelete is called after the document has been deleted from the database
+  * Lifecycle events are emitted only for root level types. Subdocuments are not subject to event publication unless they are annotated with @DBRef
+  * Lifecycle events are async. We have no guarantee to when an even is processed.
+  * To implement an event, extends AbstractMongoEventListener as a Component
 
 
   
