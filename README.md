@@ -120,6 +120,19 @@ java -jar ./my-app.jar --spring.data.mongodb.uri=mongodb://localhost:27017/airpo
   * Initialize mongobee as a Bean
   * Change set will only run once. There are some internal logic to recognize that the changeset is already run and will not run again
 
+### Module8 Testing
+* @DataMongoTest
+* @ExtendWith
+  * to use Spring Test Context
+  * test seems run without this 
+* @Category
+* @BeforeEach: setup data
+* @AfterEach: drop data
+* @SpringBootTest will instantiate listeners while @DataMongoTest will not instantiate listeners. If using @DataMongoTest, need create a @TestConfiguration class where the listerner is exposed as a Bean
+* @TestConfiguration class can also set a different database different from what is set by application.properties to insert data and do the testing 
+* @TestConfiguration is @Import before the testing class
+
+
 
   
 
